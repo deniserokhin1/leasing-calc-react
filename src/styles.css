@@ -1,0 +1,13 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
+@import '/Volumes/LaCie_1/FD/my_project/react/leasing-calc/node_modules/reset.css/reset.css';
+@font-face {
+  font-family: MyFont;
+  src: url('./fonts/Gilroy/Gilroy-Medium.woff') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: lightblue;
+  font-family: MyFont;
+}
