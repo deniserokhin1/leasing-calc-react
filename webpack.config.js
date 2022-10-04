@@ -56,6 +56,14 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/favicon.ico'),
+          to: path.resolve(__dirname, 'dist'),
+        },
+      ],
+    }),
   ],
   optimization: {
     minimizer: ['...', new CssMinimizerPlugin()],
