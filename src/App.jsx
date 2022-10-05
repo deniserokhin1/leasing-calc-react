@@ -28,7 +28,7 @@ function App() {
             <p className="text">Первоначальный взнос</p>
             <div className="block-input">
               <input className="input-number" type="number" />
-              <span className="units">13%</span>
+              <div className="block-units">13%</div>
             </div>
             <div className="block__slider">
               <div className="slider">
@@ -59,13 +59,13 @@ function App() {
           <div className="block-info">
             <p className="info__text">Сумма договора лизинга</p>
             <div className="info__money">
-              4467313 <span>₽</span>
+              44673133&nbsp;<span className="info-units">₽</span>
             </div>
           </div>
           <div className="block-info">
             <p className="info__text">Ежемесячный платеж от</p>
             <div className="info__money">
-              4467313 <span>₽</span>
+              4467313&nbsp;<span className="info-units">₽</span>
             </div>
           </div>
           <button className="btn">Оставить заявку</button>
