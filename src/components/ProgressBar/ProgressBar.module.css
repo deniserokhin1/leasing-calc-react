@@ -1,0 +1,21 @@
+.block__slider {
+  padding: 0 24px;
+}
+
+.slider {
+  position: relative;
+  top: -1px;
+  padding: 0 24px;
+  height: 1px;
+  background: #ddd;
+}
+
+.slider__progress {
+  height: 200%;
+  top: -1px;
+  left: 0;
+  position: absolute;
+  background: #ff9514;
+  border-radius: 5px 5px 0 0;
+}
+/*# sourceMappingURL=ProgressBar.module.css.map */

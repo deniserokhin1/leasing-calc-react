@@ -1,0 +1,21 @@
+.inputNumber {
+  padding: 21px 90px 16px 25px;
+  height: 68px;
+  width: 100%;
+  border-radius: 16px;
+  background: #f3f3f4;
+  border: none;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.inputNumberError {
+    padding: 21px 90px 16px 25px;
+    height: 68px;
+    width: 100%;
+    border-radius: 16px;
+    background: #fca990;
+    border: none;
+    outline: none;
+    -moz-appearance: textfield;
+  }
