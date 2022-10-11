@@ -1,0 +1,44 @@
+.percents {
+  position: absolute;
+  display: flex;
+  top: 7px;
+  right: 6px;
+  width: 69px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  font-size: 20px;
+  color: #575757;
+  background: #ebebec;
+  outline: none;
+  text-align: center;
+}
+
+.blockUnits {
+  position: absolute;
+  top: 7px;
+  right: 6px;
+  width: 69px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  font-size: 20px;
+  color: #575757;
+  outline: none;
+  background: #ebebec;
+  text-align: center;
+}
+
+.showError {
+  position: absolute;
+  top: 115%;
+  left: 0;
+  font-family: Gilroy;
+  color: rgb(155, 37, 37);
+  font-size: 15px;
+  text-align: center;
+}

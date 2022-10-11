@@ -1,11 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import MaskedInput from 'react-text-mask';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
+import { Context } from '../../context';
 
-const classes = [styles.inputNumber];
+let classes = [styles.inputNumber];
 
 const defaultMaskOptions = {
   prefix: '',
@@ -20,31 +21,60 @@ const defaultMaskOptions = {
   allowLeadingZeroes: false,
 };
 
-const checkValueAndSetMaxValue = (targetValue, maxValue, value, setValue) => {
-  if (Number(targetValue.split(' ').join('')) > maxValue) {
-    setValue({
-      ...value,
-      value: Number(maxValue),
-    });
-    console.log('Максимальный размер аванса: 6 млн. ₽');
-  } else {
-    console.log('Молодец!');
-    setValue({
-      ...value,
-      value: Number(targetValue.split(' ').join('').replace(/\D/g, '')),
-    });
-  }
-};
-
 // eslint-disable-next-line react/prop-types
-const Input = ({ minValue, maxValue, value, setValue, setCorrectValue }) => {
+const Input = ({
+  pending,
+  minValue,
+  maxValue,
+  value,
+  setValue,
+  setCorrectValue,
+}) => {
   const currencyMask = createNumberMask({
     ...defaultMaskOptions,
   });
 
+  const { setIsValue } = useContext(Context);
+
+  const [showMaxValueError, setShowMaxValueError] = useState(false);
+  const [showMinValueError, setShowMinValueError] = useState(false);
+
+  pending
+    ? classes.push(styles.inputDisabled)
+    : (classes = classes.filter((item) => item !== 'HfWbaoEnYpL9gd9o_T9d'));
+
+  const checkValueAndSetMaxValue = (targetValue, maxValue, value, setValue) => {
+    if (Number(targetValue.split(' ').join('')) > maxValue) {
+      setIsValue(true);
+      setValue({
+        ...value,
+        value: Number(maxValue),
+      });
+      setShowMaxValueError(true);
+      setShowMinValueError(false);
+    } else if (Number(targetValue.split(' ').join('')) < minValue) {
+      setIsValue(false);
+      setShowMinValueError(true);
+      setShowMaxValueError(false);
+      setValue({
+        ...value,
+        value: Number(targetValue.split(' ').join('').replace(/\D/g, '')),
+      });
+    } else {
+      setIsValue(true);
+      setShowMaxValueError(false);
+      setShowMinValueError(false);
+      setValue({
+        ...value,
+        value: Number(targetValue.split(' ').join('').replace(/\D/g, '')),
+      });
+    }
+  };
+
   return (
     <div>
       <MaskedInput
+        disabled={pending ? true : false}
         className={classes.join(' ')}
         mask={currencyMask}
         value={value.value === 0 ? '' : value.value}
@@ -57,17 +87,21 @@ const Input = ({ minValue, maxValue, value, setValue, setCorrectValue }) => {
           checkValueAndSetMaxValue(e.target.value, maxValue, value, setValue);
         }}
         onBlur={(e) => {
+          setIsValue(true);
+          setShowMaxValueError(false);
+          setShowMinValueError(false);
           setCorrectValue(e.target.value, minValue, maxValue, setValue, value);
           classes.length = 1;
         }}
       />
+      {showMaxValueError && (
+        <p className={styles.showError}>Максимальная цена: 6 млн. ₽</p>
+      )}
+      {showMinValueError && (
+        <p className={styles.showError}>Минимальная цена: 1 млн. ₽</p>
+      )}
     </div>
   );
-};
-
-Input.defaultProps = {
-  inputMode: 'numeric',
-  maskOptions: {},
 };
 
 Input.propTypes = {

@@ -9,6 +9,11 @@
   -moz-appearance: textfield;
 }
 
+.inputNumberActive {
+  background: #fff;
+  border: 2px solid #f3f3f4;
+}
+
 .inputNumberError {
   padding: 21px 90px 16px 25px;
   height: 68px;
@@ -18,5 +23,15 @@
   border: none;
   outline: none;
   -moz-appearance: textfield;
+}
+
+.showError {
+  position: absolute;
+  top: 115%;
+  left: 0;
+  font-family: Gilroy;
+  color: #9b2525;
+  font-size: 15px;
+  text-align: center;
 }
 /*# sourceMappingURL=InputPrepay.module.css.map */

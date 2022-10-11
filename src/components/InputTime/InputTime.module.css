@@ -24,4 +24,14 @@
   outline: none;
   -moz-appearance: textfield;
 }
-/*# sourceMappingURL=Input.module.css.map */
+
+.showError {
+  position: absolute;
+  top: 115%;
+  left: 0;
+  font-family: Gilroy;
+  color: #9b2525;
+  font-size: 15px;
+  text-align: center;
+}
+/*# sourceMappingURL=InputTime.module.css.map */

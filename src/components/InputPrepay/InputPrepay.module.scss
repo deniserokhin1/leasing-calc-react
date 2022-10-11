@@ -9,13 +9,28 @@
   -moz-appearance: textfield;
 }
 
+.inputNumberActive {
+  background: #fff;
+  border: 2px solid #f3f3f4;
+}
+
 .inputNumberError {
-    padding: 21px 90px 16px 25px;
-    height: 68px;
-    width: 100%;
-    border-radius: 16px;
-    background: #fca990;
-    border: none;
-    outline: none;
-    -moz-appearance: textfield;
-  }
+  padding: 21px 90px 16px 25px;
+  height: 68px;
+  width: 100%;
+  border-radius: 16px;
+  background: #fca990;
+  border: none;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.showError {
+  position: absolute;
+  top: 115%;
+  left: 0;
+  font-family: Gilroy;
+  color: rgb(155, 37, 37);
+  font-size: 15px;
+  text-align: center;
+}

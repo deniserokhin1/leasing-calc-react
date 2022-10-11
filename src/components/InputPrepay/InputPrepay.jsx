@@ -1,9 +1,10 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useContext } from 'react';
 import MaskedInput from 'react-text-mask';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import PropTypes from 'prop-types';
 import styles from './InputPrepay.module.scss';
+import { Context } from '../../context';
 
 const classes = [styles.inputNumber];
 
@@ -25,11 +26,19 @@ const InputPrepay = ({ maxValue, valuePriceCar, setValue, valuePrepay }) => {
     ...defaultMaskOptions,
   });
 
+  const { isClickPrepay } = useContext(Context);
+
+  isClickPrepay ? classes.push(styles.inputNumberActive) : (classes.length = 1);
+
   return (
     <MaskedInput
       className={classes.join(' ')}
       mask={currencyMask}
-      value={Math.round((valuePrepay.value * valuePriceCar.value) / 100)}
+      value={
+        Math.round((valuePrepay.value * valuePriceCar.value) / 100) === 0
+          ? ''
+          : Math.round((valuePrepay.value * valuePriceCar.value) / 100)
+      }
       key={valuePriceCar.key}
       readOnly
       onInput={(e) => {

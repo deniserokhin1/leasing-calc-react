@@ -24,3 +24,13 @@
   outline: none;
   -moz-appearance: textfield;
 }
+
+.showError {
+  position: absolute;
+  top: 115%;
+  left: 0;
+  font-family: Gilroy;
+  color: rgb(155, 37, 37);
+  font-size: 15px;
+  text-align: center;
+}

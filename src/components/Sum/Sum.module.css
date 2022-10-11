@@ -1,0 +1,20 @@
+.info__text {
+  font-family: Gilroy;
+  margin-bottom: 18px;
+  font-size: 16px;
+  color: #575757;
+}
+
+.info__money {
+  position: relative;
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 48.6px;
+  color: #575757;
+}
+
+.infoUnits {
+  position: absolute;
+  top: -5px;
+}
+/*# sourceMappingURL=Sum.module.css.map */
