@@ -2,8 +2,10 @@
 import React from 'react';
 import styles from './Slider.module.scss';
 
+let classes = [styles.range];
+
 // eslint-disable-next-line react/prop-types
-const Slider = ({ typeInput, value, maxValue, setValue }) => {
+const Slider = ({ typeInput, value, maxValue, setValue, pending }) => {
   const changeValue = (targetValue) => {
     setValue({ ...value, value: targetValue });
 
@@ -44,10 +46,11 @@ const Slider = ({ typeInput, value, maxValue, setValue }) => {
 
   return (
     <div className="block-range">
-      <div className={styles.range}>
+      <div className={classes.join(' ')}>
         <input
           // eslint-disable-next-line react/prop-types
           value={value.value}
+          disabled={pending ? true : false}
           min={0}
           max={maxValue}
           className={styles.range__input}

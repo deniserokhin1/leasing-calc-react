@@ -3,18 +3,22 @@
 import React from 'react';
 import styles from './ProgressBar.module.scss';
 
-const ProgressBar = ({ value, maxValue }) => {
+let classes = [styles.slider__progress];
+
+const ProgressBar = ({ value, maxValue, pending }) => {
   const changeProgressBar = (value, maxValue) => {
     const persentOffsetProgressBar =
       Math.round(100 - (value / maxValue) * 100) + '%';
     return persentOffsetProgressBar;
   };
 
+  pending ? classes.push(styles.slider_disabled) : (classes.length = 1);
+
   return (
     <div className={styles.block__slider}>
       <div className={styles.slider}>
         <div
-          className={styles.slider__progress}
+          className={classes.join(' ')}
           style={{ right: changeProgressBar(value.value, maxValue) }}
         ></div>
       </div>

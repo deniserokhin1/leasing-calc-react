@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // eslint-disable-next-line no-unused-vars
 import React, { useMemo, useState } from 'react';
 import ProgressBar from './components/ProgressBar/ProgressBar';
@@ -10,23 +11,36 @@ import { Context } from './context';
 import MonthPay from './components/MonthPay/MonthPay';
 import Sum from './components/Sum/Sum';
 import useFetching from './hooks/useFetching';
+import Button from './components/Button/Button';
+import Popup from './components/Popup/Popup';
+
+const minValuePricaCar = '1000000';
+const maxValuePricaCar = '6000000';
+const minValuePrepay = '10';
+const maxValuePrepay = '60';
+const minValueTime = '10';
+const maxValueTime = '60';
+
+const data = {
+  car_coast: '',
+  initail_payment: '',
+  initail_payment_percent: '',
+  lease_term: '',
+  total_sum: '',
+  monthly_payment_from: '',
+};
 
 function App() {
   const valuePriceCar = { value: '3300000', key: Math.random() };
   const valuePrepay = { value: '13', key: Math.random() };
   const valueTime = { value: '60', key: Math.random() };
+
   const [valueSliderPriceCar, setValueSliderPriceCar] = useState({
     ...valuePriceCar,
   });
   const [valueInputPrepay, setValueInputPrepay] = useState({ ...valuePrepay });
   const [valueInputTime, setValueInputTime] = useState({ ...valueTime });
   const [isClickPrepay, setIsClickPrepay] = useState(false);
-  const minValuePricaCar = '1000000';
-  const maxValuePricaCar = '6000000';
-  const minValuePrepay = '10';
-  const maxValuePrepay = '60';
-  const minValueTime = '10';
-  const maxValueTime = '60';
 
   const calcMonthPay = () => {
     let monthPay = null;
@@ -64,22 +78,16 @@ function App() {
   const [isFormValid, setIsFormValid] = useState(true);
   const [isValue, setIsValue] = useState(true);
 
-  const data = {
-    car_coast: '',
-    initail_payment: '',
-    initail_payment_percent: '',
-    lease_term: '',
-    total_sum: '',
-    monthly_payment_from: '',
-  };
-
-  const [request, isLodaing, Error] = useFetching(async () => {
-    await fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-  });
+  // eslint-disable-next-line no-unused-vars
+  const [request, isLodaing, isSuccess, setIsSuccess] = useFetching(
+    async () => {
+      await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+    }
+  );
 
   const setCorrectValue = (valueInput, minValue, maxValue, setValue, value) => {
     const targetValue = valueInput.split(' ').join('');
@@ -93,19 +101,15 @@ function App() {
   };
 
   const checkInputsValues = () => {
-    let checkValidate = 0;
     for (let i = 0; i < arrMinValues.length; i++) {
       const minValue = arrMinValues[i];
       if (Number(minValue) > Number(arrValues[i])) {
-        checkValidate += 1;
+        setIsFormValid(false);
       }
-    }
-    if (checkValidate) {
-      setIsFormValid(!isFormValid);
     }
   };
 
-  const checkValidForm = (arrInputs) => {
+  const sendDataForm = (arrInputs) => {
     if (isFormValid) {
       const arrResultValues = [];
       const keysData = Object.keys(data);
@@ -123,7 +127,6 @@ function App() {
       request();
     } else {
       setIsFormValid(!isFormValid);
-      console.log('Косяк');
     }
   };
 
@@ -139,7 +142,7 @@ function App() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          checkValidForm(e.target.elements);
+          sendDataForm(e.target.elements);
         }}
       >
         <div className="container">
@@ -157,11 +160,17 @@ function App() {
                     setValue={setValueSliderPriceCar}
                     setCorrectValue={setCorrectValue}
                   />
-                  <span className="units">₽</span>
+                  <span
+                    style={isLodaing ? { color: '#57575776' } : {}}
+                    className="units"
+                  >
+                    ₽
+                  </span>
                 </div>
                 <ProgressBar
                   value={valueSliderPriceCar}
                   maxValue={maxValuePricaCar}
+                  pending={isLodaing}
                 />
                 <Slider
                   isLodaing={isLodaing}
@@ -169,6 +178,7 @@ function App() {
                   value={valueSliderPriceCar}
                   maxValue={maxValuePricaCar}
                   setValue={setValueSliderPriceCar}
+                  pending={isLodaing}
                 />
               </div>
               <div className="content__input price-car">
@@ -179,6 +189,7 @@ function App() {
                     valuePriceCar={valueSliderPriceCar}
                     valuePrepay={valueInputPrepay}
                     setValue={setValueSliderPriceCar}
+                    pending={isLodaing}
                   />
                   <Prepay
                     isLodaing={isLodaing}
@@ -187,17 +198,20 @@ function App() {
                     value={valueInputPrepay}
                     setValue={setValueInputPrepay}
                     setCorrectValue={setCorrectValue}
+                    pending={isLodaing}
                   />
                 </div>
                 <ProgressBar
                   value={valueInputPrepay}
                   maxValue={maxValuePrepay}
+                  pending={isLodaing}
                 />
                 <Slider
                   typeInput={'prepay'}
                   value={valueInputPrepay}
                   maxValue={maxValuePrepay}
                   setValue={setValueInputPrepay}
+                  pending={isLodaing}
                 />
               </div>
               <div className="content__input price-car">
@@ -210,15 +224,26 @@ function App() {
                     value={valueInputTime}
                     setValue={setValueInputTime}
                     setCorrectValue={setCorrectValue}
+                    pending={isLodaing}
                   />
-                  <span className="units">мес.</span>
+                  <span
+                    style={isLodaing ? { color: '#57575776' } : {}}
+                    className="units"
+                  >
+                    мес.
+                  </span>
                 </div>
-                <ProgressBar value={valueInputTime} maxValue={maxValueTime} />
+                <ProgressBar
+                  value={valueInputTime}
+                  maxValue={maxValueTime}
+                  pending={isLodaing}
+                />
                 <Slider
                   typeInput={'time'}
                   value={valueInputTime}
                   maxValue={maxValueTime}
                   setValue={setValueInputTime}
+                  pending={isLodaing}
                 />
               </div>
             </div>
@@ -228,22 +253,21 @@ function App() {
                 prepay={valueInputPrepay}
                 priceCar={valueSliderPriceCar}
                 valueTime={valueInputTime}
+                pending={isLodaing}
               />
-              <MonthPay monthPay={monthPay} />
-              <button
-                onMouseDown={() => {
-                  checkInputsValues();
-                }}
-                type="submit"
-                className={isValue ? 'btn' : 'btn_disabled'}
-                disabled={isValue ? false : true}
+              <MonthPay monthPay={monthPay} pending={isLodaing} />
+              <Button
+                checkInputsValues={checkInputsValues}
+                pending={isLodaing}
+                isValue={isValue}
               >
                 Оставить заявку
-              </button>
+              </Button>
             </div>
           </div>
         </div>
       </form>
+      <Popup isSuccess={isSuccess} setIsSuccess={setIsSuccess}></Popup>
     </Context.Provider>
   );
 }

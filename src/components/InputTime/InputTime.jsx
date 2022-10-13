@@ -27,6 +27,7 @@ const InputTime = ({
   value,
   setValue,
   setCorrectValue,
+  pending,
 }) => {
   const currencyMask = createNumberMask({
     ...defaultMaskOptions,
@@ -68,6 +69,8 @@ const InputTime = ({
   return (
     <div>
       <MaskedInput
+        disabled={pending ? true : false}
+        style={pending ? { color: '#57575776' } : {}}
         className={classes.join(' ')}
         mask={currencyMask}
         value={value.value === 0 ? '' : value.value}

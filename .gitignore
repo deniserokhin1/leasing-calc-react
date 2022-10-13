@@ -2,3 +2,4 @@ node_modules
 .husky
 dist
 1440.png
+src/fontawesome

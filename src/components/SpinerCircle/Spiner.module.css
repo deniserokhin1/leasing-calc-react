@@ -1,0 +1,129 @@
+.div_spiner {
+  position: absolute;
+  top: 18%;
+  left: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.spinner {
+  -webkit-animation: rotate 2s linear infinite;
+          animation: rotate 2s linear infinite;
+  width: 50px;
+  height: 50px;
+}
+
+.spinner .path {
+  stroke: white;
+  stroke-linecap: round;
+  -webkit-animation: dash 1.5s ease-in-out infinite;
+          animation: dash 1.5s ease-in-out infinite;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+.spinner_qM83 {
+  -webkit-animation: spinner_8HQG 1.05s infinite;
+          animation: spinner_8HQG 1.05s infinite;
+  fill: #ff9514;
+}
+
+.spinner_oXPr {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+.spinner_ZTLf {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+@-webkit-keyframes spinner_8HQG {
+  0%,
+  57.14% {
+    -webkit-animation-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1);
+            animation-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1);
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  28.57% {
+    -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.66, 0.33);
+            animation-timing-function: cubic-bezier(0.33, 0, 0.66, 0.33);
+    -webkit-transform: translateY(-6px);
+            transform: translateY(-6px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@keyframes spinner_8HQG {
+  0%,
+  57.14% {
+    -webkit-animation-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1);
+            animation-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1);
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  28.57% {
+    -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.66, 0.33);
+            animation-timing-function: cubic-bezier(0.33, 0, 0.66, 0.33);
+    -webkit-transform: translateY(-6px);
+            transform: translateY(-6px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+/*# sourceMappingURL=Spiner.module.css.map */

@@ -105,6 +105,7 @@ const Input = ({
 };
 
 Input.propTypes = {
+  pending: PropTypes.bool,
   register: PropTypes.func,
   inputmode: PropTypes.string,
   value: PropTypes.object,

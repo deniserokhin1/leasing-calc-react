@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import { Context } from '../../context';
 import styles from './Prepay.module.scss';
 
-const Prepay = ({ minValue, maxValue, value, setValue, setCorrectValue }) => {
+const Prepay = ({
+  minValue,
+  maxValue,
+  value,
+  setValue,
+  setCorrectValue,
+  pending,
+}) => {
   const [showInputPrepay, setShowInputPrepay] = useState(false);
   const [showDivPrepay, setShowDivPrepay] = useState(true);
 
@@ -45,13 +52,18 @@ const Prepay = ({ minValue, maxValue, value, setValue, setCorrectValue }) => {
   return (
     <div
       onClick={() => {
-        setIsClickPrepay(true);
-        setShowDivPrepay(false);
-        setShowInputPrepay(true);
+        if (!pending) {
+          setIsClickPrepay(true);
+          setShowDivPrepay(false);
+          setShowInputPrepay(true);
+        }
       }}
     >
       {showDivPrepay && (
-        <div className={styles.percents}>
+        <div
+          style={pending ? { color: '#57575776' } : {}}
+          className={styles.percents}
+        >
           {value.value === 0 ? '' : value.value + '%'}
         </div>
       )}

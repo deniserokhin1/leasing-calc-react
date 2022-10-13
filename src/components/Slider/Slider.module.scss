@@ -11,19 +11,6 @@
   }
 }
 
-// .range:hover {
-//   position: absolute;
-//   width: 100%;
-//   padding: 0 24px;
-//   top: 95.5px;
-//   &__input {
-//     width: 100%;
-//     background: none;
-//     pointer-events: none;
-//     -webkit-appearance: none;
-//   }
-// }
-
 @-moz-document url-prefix() {
   .range {
     position: absolute;

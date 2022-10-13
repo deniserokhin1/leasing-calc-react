@@ -1,0 +1,44 @@
+.btn {
+  margin-top: 4px;
+  width: 100%;
+  height: 70px;
+  padding: 18px 0 15px;
+  border: none;
+  border-radius: 40px;
+  background: #ff9514;
+  font-family: Nekst;
+  font-size: 30px;
+  color: #fff;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+}
+
+.btn_disabled {
+  margin-top: 4px;
+  width: 100%;
+  height: 70px;
+  padding: 18px 0 15px;
+  border: none;
+  border-radius: 40px;
+  background: rgba(255, 149, 20, 0.4);
+  font-family: Nekst;
+  font-size: 30px;
+  color: #fff;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+}
+
+.btn:hover {
+  background: black;
+}
+
+.btn:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+  background: #575757;
+}
+/*# sourceMappingURL=Button.module.css.map */
