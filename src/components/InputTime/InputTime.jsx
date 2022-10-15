@@ -96,9 +96,7 @@ const InputTime = ({
         </p>
       )}
       {showMinValueError && (
-        <p className={styles.showError}>
-          Минимальный срок лизинга: 10 месяцев.
-        </p>
+        <p className={styles.showError}>Минимальный срок: 10 месяцев.</p>
       )}
     </div>
   );

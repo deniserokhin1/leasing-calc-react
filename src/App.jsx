@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 // eslint-disable-next-line no-unused-vars
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import ProgressBar from './components/ProgressBar/ProgressBar';
 import Slider from './components/Slider/Slider';
 import Prepay from './components/Prepay/Prepay';
@@ -12,7 +12,8 @@ import MonthPay from './components/MonthPay/MonthPay';
 import Sum from './components/Sum/Sum';
 import useFetching from './hooks/useFetching';
 import Button from './components/Button/Button';
-import Popup from './components/Popup/Popup';
+import PopupSuccess from './components/PopupSuccess/PopupSuccess';
+import PopupError from './components/PopupError/PopupError';
 
 const minValuePricaCar = '1000000';
 const maxValuePricaCar = '6000000';
@@ -63,16 +64,12 @@ function App() {
     setMonthPay(calcMonthPay());
   }, [valueSliderPriceCar.value, valueInputPrepay.value, valueInputTime.value]);
 
-  const arrMinValues = [
-    Number(minValuePricaCar),
-    Number(minValuePrepay),
-    Number(minValueTime),
-  ];
+  const arrMinValues = [minValuePricaCar, minValuePrepay, minValueTime];
 
   const arrValues = [
-    Number(valueSliderPriceCar.value),
-    Number(valueInputPrepay.value),
-    Number(valueInputTime.value),
+    valueSliderPriceCar.value,
+    valueInputPrepay.value,
+    valueInputTime.value,
   ];
 
   const [isFormValid, setIsFormValid] = useState(true);
@@ -125,9 +122,15 @@ function App() {
         data[key] = arrResultValues[i];
       }
       request();
-    } else {
-      setIsFormValid(!isFormValid);
     }
+  };
+
+  const [heigthScreen, setHeigthScreen] = useState('');
+  const [widthScreen, setWidthScreen] = useState('');
+
+  window.onmousedown = (e) => {
+    setHeigthScreen(e.srcElement.ownerDocument.documentElement.scrollHeight);
+    setWidthScreen(e.srcElement.ownerDocument.documentElement.scrollWidth);
   };
 
   return (
@@ -144,9 +147,14 @@ function App() {
           e.preventDefault();
           sendDataForm(e.target.elements);
         }}
+        onKeyDown={(e) => {
+          e.key === 'Enter' ? checkInputsValues() : '';
+        }}
       >
         <div className="container">
-          <h1 className="title">Рассчитайте стоимость автомобиля в лизинг</h1>
+          <h1 className="title">
+            Рассчитайте стоимость автомобиля в&nbsp;лизинг
+          </h1>
           <div className="content">
             <div className="column-input">
               <div className="content__input price-car">
@@ -267,7 +275,18 @@ function App() {
           </div>
         </div>
       </form>
-      <Popup isSuccess={isSuccess} setIsSuccess={setIsSuccess}></Popup>
+      <PopupSuccess
+        widthScreen={widthScreen}
+        heigthScreen={heigthScreen}
+        isSuccess={isSuccess}
+        setIsSuccess={setIsSuccess}
+      ></PopupSuccess>
+      <PopupError
+        widthScreen={widthScreen}
+        heigthScreen={heigthScreen}
+        isFormValid={isFormValid}
+        setIsFormValid={setIsFormValid}
+      ></PopupError>
     </Context.Provider>
   );
 }

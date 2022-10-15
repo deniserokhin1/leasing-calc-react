@@ -34,4 +34,12 @@
   font-size: 15px;
   text-align: center;
 }
+
+@media (max-width: 320px) {
+  .inputNumber {
+    padding: 20px 90px 16px 19px;
+    height: 58px;
+    color: #333e48;
+  }
+}
 /*# sourceMappingURL=InputTime.module.css.map */

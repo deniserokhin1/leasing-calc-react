@@ -42,3 +42,19 @@
   font-size: 15px;
   text-align: center;
 }
+
+@media (max-width: 320px) {
+  .percents {
+    top: 8px;
+    width: 63px;
+    height: 45px;
+    color: #333e48;
+  }
+  .blockUnits {
+    position: absolute;
+    top: 8px;
+    width: 63px;
+    height: 45px;
+    color: #333e48;
+  }
+}

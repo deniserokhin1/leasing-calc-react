@@ -36,3 +36,48 @@
   transform: scale(0.98);
   background: #575757;
 }
+
+@media (max-width: 1024px) {
+  .btn {
+    width: 77%;
+  }
+
+  .btn_disabled {
+    width: 77%;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn {
+    width: 104%;
+  }
+
+  .btn_disabled {
+    width: 104%;
+  }
+}
+
+@media (max-width: 440px) {
+  .btn {
+    font-size: 22px;
+    height: 60px;
+  }
+
+  .btn_disabled {
+    font-size: 22px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 320px) {
+  .btn {
+    width: 100%;
+  }
+
+  .btn_disabled {
+    width: 100%;
+  }
+  .btnContainer {
+    margin-top: 9px;
+  }
+}

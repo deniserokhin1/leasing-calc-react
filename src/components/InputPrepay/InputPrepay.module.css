@@ -59,4 +59,39 @@
   outline: none;
   -moz-appearance: textfield;
 }
+
+@media (max-width: 440px) {
+  .inputNumber {
+    font-size: 22px;
+  }
+  .infoUnits {
+    top: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .infoUnits {
+    top: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .inputNumber {
+    padding: 14px 90px 16px 19px;
+    height: 58px;
+    color: #333e48;
+  }
+  .inputNumberActive {
+    padding: 12px 90px 16px 19px;
+  }
+  .infoUnits {
+    top: 12px;
+  }
+  .inputDisabled {
+    padding: 14px 90px 16px 19px;
+    height: 58px;
+    width: 100%;
+    color: #57575776;
+  }
+}
 /*# sourceMappingURL=InputPrepay.module.css.map */

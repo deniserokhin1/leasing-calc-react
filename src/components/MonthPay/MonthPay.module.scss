@@ -17,3 +17,43 @@
   position: absolute;
   top: -5px;
 }
+
+@media (max-width: 710px) {
+  .info__money {
+    font-size: 44px;
+  }
+  .info__text {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 495px) {
+  .info__money {
+    font-size: 35px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 440px) {
+  .info__money {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 320px) {
+  .info__money {
+    font-size: 22px;
+    line-height: 30px;
+    color: #333e48;
+  }
+  .info__text {
+    font-size: 14px;
+    line-height: 30px;
+    margin-bottom: 0;
+    color: #333e48;
+  }
+  .infoUnits {
+    top: -2px;
+  }
+}

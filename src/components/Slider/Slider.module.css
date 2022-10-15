@@ -20,4 +20,43 @@
     top: 89.5px;
   }
 }
+
+@media (max-width: 710px) {
+  .range {
+    top: 88.5px;
+  }
+  @-moz-document url-prefix() {
+    .range {
+      position: absolute;
+      width: 100%;
+      padding: 0 24px;
+      top: 79.5px;
+    }
+  }
+}
+
+@media (max-width: 440px) {
+  @-moz-document url-prefix() {
+    .range {
+      position: absolute;
+      width: 100%;
+      padding: 0 24px;
+      top: 82.5px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .range {
+    top: 70.5px;
+  }
+  @-moz-document url-prefix() {
+    .range {
+      position: absolute;
+      width: 100%;
+      padding: 0 24px;
+      top: 68.5px;
+    }
+  }
+}
 /*# sourceMappingURL=Slider.module.css.map */

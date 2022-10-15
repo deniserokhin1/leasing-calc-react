@@ -50,4 +50,23 @@
   outline: none;
   -moz-appearance: textfield;
 }
+
+@media (max-width: 320px) {
+  .inputNumber {
+    padding: 25px 90px 16px 19px;
+    height: 58px;
+    color: #333e48;
+  }
+  .inputDisabled {
+    padding: 25px 90px 16px 19px;
+    height: 58px;
+    width: 100%;
+    border-radius: 16px;
+    background: #f3f3f4;
+    color: #57575776;
+    border: none;
+    outline: none;
+    -moz-appearance: textfield;
+  }
+}
 /*# sourceMappingURL=Input.module.css.map */

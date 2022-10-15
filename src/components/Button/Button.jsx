@@ -6,14 +6,14 @@ import styles from './Button.module.scss';
 // eslint-disable-next-line react/prop-types
 const Button = ({ checkInputsValues, isValue, children, pending }) => {
   return (
-    <div style={{ position: 'relative' }}>
+    <div className={styles.btnContainer} style={{ position: 'relative' }}>
       <button
         onMouseDown={() => {
           checkInputsValues();
         }}
         type="submit"
         className={isValue ? styles.btn : styles.btn_disabled}
-        disabled={pending || !isValue ? true : false}
+        disabled={pending ? true : false}
       >
         {pending ? '' : children}
       </button>

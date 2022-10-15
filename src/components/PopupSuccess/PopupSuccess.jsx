@@ -1,11 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import styles from './Popup.module.scss';
+import styles from './PopupSuccess.module.scss';
 
-const Popup = ({ isSuccess, setIsSuccess }) => {
+const PopupSuccess = ({
+  isSuccess,
+  setIsSuccess,
+  heigthScreen,
+  widthScreen,
+}) => {
   return (
     <div
+      style={widthScreen < 1025 ? { height: heigthScreen } : { height: '100%' }}
       onClick={() => {
         setIsSuccess(false);
       }}
@@ -33,4 +39,4 @@ const Popup = ({ isSuccess, setIsSuccess }) => {
   );
 };
 
-export default Popup;
+export default PopupSuccess;
